@@ -1,0 +1,131 @@
+@media screen and (max-width: 576px) {
+  .font-xs-xxl {
+    font-size: 2.25rem;
+  }
+  .font-xs-xl {
+    font-size: 1.5rem;
+  }
+  .font-xs-l {
+    font-size: 1.25rem;
+  }
+  .font-xs-xs {
+    font-size: 0.875rem;
+  }
+  .font-xs-xxs {
+    font-size: 0.75rem;
+  }
+  .font-xs-md {
+    font-size: 1.125rem;
+  }
+  .font-xs-m {
+    font-size: 1.875rem;
+  }
+  .font-xs-base {
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 576px) {
+  .font-sm-xxl {
+    font-size: 2.25rem;
+  }
+  .font-sm-xl {
+    font-size: 1.5rem;
+  }
+  .font-sm-l {
+    font-size: 1.25rem;
+  }
+  .font-sm-xs {
+    font-size: 0.875rem;
+  }
+  .font-sm-xxs {
+    font-size: 0.75rem;
+  }
+  .font-sm-md {
+    font-size: 1.125rem;
+  }
+  .font-sm-m {
+    font-size: 1.875rem;
+  }
+  .font-sm-base {
+    font-size: 1rem;
+  }
+  .logo-p {
+    display: block !important;
+  }
+  .add-bl {
+    display: block !important;
+  }
+  .add-hid {
+    display: none;
+  }
+  .profile-img {
+    width: calc(var(--spacing) * 10);
+    height: calc(var(--spacing) * 10);
+  }
+  .nav-sidebar {
+    gap: 0.75rem !important;
+  }
+  .set-btn {
+    display: block !important;
+  }
+  .total-summary {
+  --bs-gutter-y:1rem;
+  --bs-gutter-x: 1rem;
+}
+
+}
+@media screen and (min-width: 768px) {
+  .font-md-xxl {
+    font-size: 2.25rem;
+  }
+  .font-md-xl {
+    font-size: 1.5rem;
+  }
+  .font-md-l {
+    font-size: 1.25rem;
+  }
+  .font-md-xs {
+    font-size: 0.875rem;
+  }
+  .font-md-xxs {
+    font-size: 0.75rem;
+  }
+  .font-md-md {
+    font-size: 1.125rem;
+  }
+  .font-md-m {
+    font-size: 1.875rem;
+  }
+  .font-md-base {
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .font-lg-xxl {
+    font-size: 2.25rem;
+  }
+  .font-lg-xl {
+    font-size: 1.5rem;
+  }
+  .font-lg-l {
+    font-size: 1.25rem;
+  }
+  .font-lg-xs {
+    font-size: 0.875rem;
+  }
+  .font-lg-xxs {
+    font-size: 0.75rem;
+  }
+  .font-lg-md {
+    font-size: 1.125rem;
+  }
+  .font-lg-m {
+    font-size: 1.875rem;
+  }
+  .container,.main-container {
+    padding-inline: 2rem !important;
+  }
+  .main-container {
+    padding-block: 2rem !important;
+  }
+}
