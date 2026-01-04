@@ -11,7 +11,7 @@ var img = document.getElementById("profileInput");
 var contactList = [];
 console.log(JSON.parse(localStorage.getItem("contactList")));
 
-if(localStorage.getItem("contactList")){
+if (localStorage.getItem("contactList")) {
   contactList = JSON.parse(localStorage.getItem("contactList"));
 }
 var counts = {
@@ -157,7 +157,6 @@ function checkValidations() {
 }
 
 function addContact() {
-  
   var update = document.getElementById("staticBackdrop").hasAttribute("update");
   console.log("field", update);
 
@@ -180,8 +179,8 @@ function addContact() {
   if (!checkValidations()) {
     return;
   }
-  console.log(img.files.length == 0 ? '' : `images/${img.files[0].name}`);
-  
+  console.log(img.files.length == 0 ? "" : `images/${img.files[0].name}`);
+
   var contact = {
     name: contactName.value,
     phoneNumber: phoneNumber.value,
@@ -191,7 +190,7 @@ function addContact() {
     notes: notes.value,
     emerg: emerg.checked,
     fav: fav.checked,
-    img: img.files.length == 0 ? '' : `images/${img.files[0].name}`
+    img: img.files.length == 0 ? "" : `images/${img.files[0].name}`,
   };
   if (contact.emerg == true) {
     counts.emergency++;
@@ -200,13 +199,13 @@ function addContact() {
     counts.favorites++;
   }
   contactList.push(contact);
-  localStorage.setItem("contactList",JSON.stringify(contactList));
+  localStorage.setItem("contactList", JSON.stringify(contactList));
   console.log(contactList);
   displayCounts(contactList);
   displayContacts(contactList);
   displayFavourites(contactList);
   displayEmergencies(contactList);
-  afterAdding();
+  afterAdding();//change
   clearForm();
 }
 function updateContact(i) {
@@ -222,8 +221,12 @@ function updateContact(i) {
     notes: notes.value,
     emerg: emerg.checked,
     fav: fav.checked,
-    img:`images/${img.files[0]?.name}`
+    img: `images/${img.files[0]?.name}`,
   };
+  validateInputs(contactName);
+  validateInputs(phoneNumber);
+  validateInputs(emailAddress);
+
   duplicateUpdatedPhone(i, phoneNumber);
   console.log("regex", regex);
 
@@ -248,8 +251,9 @@ function updateContact(i) {
   contactList[i].notes = notes.value;
   contactList[i].fav = fav.checked;
   contactList[i].emerg = emerg.checked;
-  contactList[i].img = img.files.length == 0 ? '' : `images/${img.files[0].name}`
-  localStorage.setItem("contactList",JSON.stringify(contactList));
+  contactList[i].img =
+    img.files.length == 0 ? "" : `images/${img.files[0].name}`;
+  localStorage.setItem("contactList", JSON.stringify(contactList));
   displayCounts(contactList);
   displayContacts(contactList);
   displayFavourites(contactList);
@@ -268,7 +272,7 @@ function getContact(i) {
   fav.checked = contact.fav;
   emerg.checked = contact.emerg;
   const modalEl = document.getElementById("staticBackdrop");
-  const modal = bootstrap.Modal.getInstance(modalEl);
+  const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
   modal.show();
   document.getElementById("staticBackdrop").setAttribute("update", "true");
   document.getElementById("staticBackdrop").setAttribute("data-id", i);
@@ -303,9 +307,9 @@ function afterAdding() {
     }, 1000);
   }
 }
-function displayContacts(list) {  
+function displayContacts(list) {
   var data = "";
-  if (list.length == 0) {    
+  if (list.length == 0) {
     document.getElementById("noContacts").classList.remove("d-none");
     document.getElementById("noContacts").classList.add("d-block");
   } else {
@@ -320,8 +324,18 @@ function displayContacts(list) {
                                         <div class="position-relative">
                                             <div
                                                 class="contact-icon-name text-capitalize font-xs-md font-sm-md rounded-3 d-flex align-items-center justify-content-center">
-                                                ${contactList[i].img.length == 0 ? contactList[i].name.charAt(0): ""}
-                                                <img src="${contactList[i].img}" class="w-100 rounded-3 ${contactList[i].img ? 'd-block': 'd-none'}" alt="${contactList[i].name}">
+                                                ${
+                                                  contactList[i].img.length == 0
+                                                    ? contactList[
+                                                        i
+                                                      ].name.charAt(0)
+                                                    : ""
+                                                }
+                                                <img src="${
+                                                  contactList[i].img
+                                                }" class="w-100 rounded-3 ${
+        contactList[i].img ? "d-block" : "d-none"
+      }" alt="${contactList[i].name}">
 
                                             </div>
                                             <div id="contactFav"
@@ -498,8 +512,8 @@ function displayContacts(list) {
   document.getElementById("contactsData").innerHTML = data;
 }
 function displayFavourites(list) {
-  console.log("liist--",list);
-  console.log("counts.favorites--",counts.favorites);
+  console.log("liist--", list);
+  console.log("counts.favorites--", counts.favorites);
 
   var data = "";
   if (list.length == 0 || counts.favorites == 0) {
@@ -627,8 +641,7 @@ function addFavourite(i) {
   }
   displayCounts(contactList);
   displayFavourites(contactList);
-  localStorage.setItem("contactList",JSON.stringify(contactList));
-
+  localStorage.setItem("contactList", JSON.stringify(contactList));
 }
 function addEmergency(i) {
   var index = i + 1;
@@ -675,8 +688,7 @@ function addEmergency(i) {
   }
   displayCounts(contactList);
   displayEmergencies(contactList);
-  localStorage.setItem("contactList",JSON.stringify(contactList));
-
+  localStorage.setItem("contactList", JSON.stringify(contactList));
 }
 function clearForm() {
   contactName.value = null;
@@ -687,9 +699,8 @@ function clearForm() {
   group.value = "";
   fav.checked = false;
   emerg.checked = false;
-  img.value = ""
+  img.value = "";
   document.getElementById("staticBackdrop").removeAttribute("update");
-
 }
 function warningDelete(i) {
   document.getElementById("deletePage").classList.remove("d-none");
@@ -713,8 +724,7 @@ function deleteContact() {
     document.getElementById("deletedPage").classList.add("d-none");
     document.getElementById("deletedPage").classList.remove("d-block");
   }, 1000);
-  localStorage.setItem("contactList",JSON.stringify(contactList));
-
+  localStorage.setItem("contactList", JSON.stringify(contactList));
 }
 function cancel(tagName) {
   document.getElementById(tagName).classList.add("d-none");
@@ -736,6 +746,7 @@ function searchInput(element) {
   }
   displayContacts(searchList);
 }
+
 displayCounts(contactList);
 displayContacts(contactList);
 displayFavourites(contactList);
